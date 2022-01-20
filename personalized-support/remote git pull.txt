@@ -1,1 +1,0 @@
-http://95.179.208.166/update.php?pull=1
