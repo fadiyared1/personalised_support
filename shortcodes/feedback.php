@@ -109,7 +109,15 @@ function export_feedbacks_to_csv()
 		}
 	}
 }
-
+add_shortcode('feedback', 'cp_var' );  
+function cp_var($s, $c) {
+  if($s==$c){
+	  return "checked";
+  }
+  else{
+	  return '';
+  }
+}
 
 add_shortcode('feedback', 'feedback_shortcode');
 function feedback_shortcode($atts, $content)
@@ -121,10 +129,15 @@ function feedback_shortcode($atts, $content)
 			$metadata_attributes = Metadata::get_current_attributes();
 			if (Metadata::is_valid($metadata_attributes))
 			{
+				$chq = "1";
+				$num = PSUser::get_numero();
 				$activite = $metadata_attributes[Metadata::activite];
-				$cours = $metadata_attributes[Metadata::cours];
+				$cours = $metadata_attributes[Metadata::cours];				
 				$item = $atts[Feedback::item];
-
+				global $wpdb;
+				$table_name = $wpdb->prefix . "ps_feedbacks";
+				$registered = $wpdb->get_var( "SELECT value FROM $table_name WHERE user_numero = '{$num}'  AND activite = '{$activite}' AND cours = '{$cours}' AND item = '{$item}'" );
+				
 				if (!isset($atts['title']))
 				{
 					$title = Localisation::get('Feedback');
@@ -135,7 +148,6 @@ function feedback_shortcode($atts, $content)
 				}
 
 				$data_prefix = 'data-';
-
 				$radio_group = microtime();
 
 				$content =
@@ -145,30 +157,26 @@ function feedback_shortcode($atts, $content)
 					$data_prefix . Feedback::item . "=\"{$item}\"" .
 					'>
 						<span class="feedback-span">
-						<p>'. $value.'</p>
 							<label>
-							<input type="radio" name="' . $radio_group . '" class="feedback-button">
+							<input type="radio" name="' . $radio_group . '" class="feedback-button" '.$blc= cp_var($registered,1).'> 
 							1
 							</label>
 						</span>
-						
 						<span class="feedback-span">
 							<label>
-							<input type="radio" name="' . $radio_group . '" class="feedback-button">
+							<input type="radio" name="' . $radio_group . '" class="feedback-button" '.$blc= cp_var($registered,2).'>
 							2
 							</label>
 						</span>
-						
 						<span class="feedback-span">
 							<label>
-							<input type="radio" name="' . $radio_group . '" class="feedback-button">
+							<input type="radio" name="' . $radio_group . '" class="feedback-button" '.$blc= cp_var($registered,3).'>
 							3
 							</label>
 						</span>
-						
 						<span class="feedback-span">
 							<label>
-							<input type="radio" name="' . $radio_group . '" class="feedback-button">
+							<input type="radio" name="' . $radio_group . '" class="feedback-button" '.$blc= cp_var($registered,4).'>
 							4
 							</label>
 						</span>
