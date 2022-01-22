@@ -64,9 +64,28 @@ class PSUsers
 			return null;
 		}
 	}
+	static function get_all_users()
+	{
+		global $wpdb;
+	
+		$table_name = PSUsers::$table_name;
+	
+		$prepared_statement = $wpdb->prepare("SELECT numero FROM {$table_name}");
+		$users = $wpdb->get_col($prepared_statement);
+
+		if (count($users) > 0)
+		{
+			return $users;
+		}
+		else
+		{
+			return null;
+		}
+	}
 
 	static function is_numero_valid($numero)
 	{
 		return PSUsers::get_user($numero) != null;
 	}
+
 }
