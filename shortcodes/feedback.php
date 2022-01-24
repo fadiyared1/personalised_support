@@ -62,7 +62,18 @@ class Feedback
 
 		return $wpdb->query($sql);
 	}
+	static function get_feedbacks($user_numero)
+	{
+		global $wpdb;
 
+		$table_name = Feedback::$table_name;
+
+		$sql =
+			"SELECT FROM {$table_name}
+			WHERE (user_numero = '{$user_numero}')";
+
+		return $wpdb->query($sql);
+	}
 	static function enqueue_ajax()
 	{
 		wp_add_inline_script(

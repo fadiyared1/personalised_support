@@ -43,7 +43,7 @@ function personalized_support_menu_output()
 <!DOCTYPE html>
 <html>
 <head>
-	<link href="https://fdypress.edotnet.net/wp-content/plugins/personalised_support/css/admin-page.css" rel="stylesheet">
+	<link href="<?php echo plugins_url('personalised_support/css/admin-page.css')?>" rel="stylesheet">
 </head>
 <body>
 	<div class="wrap">
@@ -79,8 +79,8 @@ function personalized_support_menu_output()
 				foreach($all as $a)
 				{?>
 				<tr >
-				<td scope="row"><?php echo $i ?></td>
-				<td><?php echo $a; $i++;?></td>
+				<td scope="row"><?php echo $i ?></td>			 
+				<td><a href ="<?php echo plugins_url('personalised_support/student-page.php')."/".$a?>" target="_blank"><?php echo $a; $i++;?></a></td>
 				</tr>
 				<?php
 				}?>

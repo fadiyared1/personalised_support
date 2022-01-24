@@ -32,6 +32,7 @@ function logout_form_html($title, $numero)
     $content = '<div>
                     Connecté avec le numéro ' . $numero . '
                     <form method="POST" action="">
+                    <br>
                         <button type="submit" name="logout">' . $logout . '</button>
                     </form>
                 </div>';
