@@ -1,27 +1,33 @@
 html{
     width: 100%;
     height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
 }
 body{
     width: 100%;
     height: 100%;
 }
 .before{
-    width: 100%;
-    height:10%;
-    background-color: rgb(179, 179, 179);
-    font-size: 3em;
-    text-align: center;
+    
+    font-size: 1.5em;
+    
 }
 table {
-    width: 100%;
-    border-collapse: collapse;
+    width: 90%;
+    
+    border-collapse: separate;
+    border-spacing: 0 15px;
+    text-align: center;
+  }
+  th,td{
+    padding:5px
   }
 table tr{
     height: 3em;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 table tr#header{
-    background-color: black;
+    background-color: #225cff;
     color: white;
 }
 table tr.red{
@@ -32,3 +38,21 @@ table tr.red{
     background-color: rgba(0, 128, 0, 0.600);
 
   }
+
+  label.green{
+      color: white;
+      background-color: #22e322;
+      padding: 5px;
+      border-radius: 10%;
+  }
+
+  label.red{
+    color: white;
+    background-color: #f01717;
+    padding: 5px;
+    border-radius: 10%;
+}
+
+.fieldset{
+    width:50%
+}
