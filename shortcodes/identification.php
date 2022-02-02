@@ -34,6 +34,7 @@ function logout_form_html($title, $numero)
                     <form method="POST" action="">
                     <br>
                         <button type="submit" name="logout">' . $logout . '</button>
+                        <button><a href="#" style="text-decoration: none; color: currentColor !important;">Synthese</a></button>
                     </form>
                 </div>';
 
