@@ -28,13 +28,14 @@ function login_form_html($title, $extra_html = "")
 function logout_form_html($title, $numero)
 {
     $logout = Localisation::get('Se deconnecter');
-
+    $a = PSUser::get_numero();
+    $url = plugins_url('personalised_support/student-summary.php');
     $content = '<div>
                     Connecté avec le numéro ' . $numero . '
                     <form method="POST" action="">
                     <br>
                         <button type="submit" name="logout">' . $logout . '</button>
-                        <button><a href="#" style="text-decoration: none; color: currentColor !important;">Synthese</a></button>
+                        <button><a href ="'.$url.'/'.$a.'" target="_blank" style="text-decoration: none; color: currentColor !important;">Synthese</a></button>
                     </form>
                 </div>';
 

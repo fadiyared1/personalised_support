@@ -110,7 +110,7 @@ function export_feedbacks_to_csv()
 
 		$f = fopen('php://output', 'w');
 
-		$columns_heading = array('Numéro', 'Cours', 'Activité', 'Item', 'Valeur');
+		$columns_heading = array('Numero', 'Cours', 'Activite', 'Item', 'Valeur');
 		fputcsv($f, $columns_heading);
 
 		foreach ($results as $row)
